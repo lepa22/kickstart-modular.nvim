@@ -147,7 +147,34 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
-
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                -- Disable linting and formatting using pylsp since we will use Ruff for those.
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                mccabe = { enabled = false },
+                autopep8 = { enabled = false },
+                yapf = { enabled = false },
+              },
+            },
+          },
+        },
+        ruff_lsp = {
+          init_options = {
+            settings = {
+              args = {
+                -- Enable Pyflakes (`F`) and pycodestyle (`E`, `W`) codes.
+                -- https://docs.astral.sh/ruff/configuration/
+                '--select=F,E,W,D',
+                -- Enable preview mode to use unstable features, such as:
+                -- https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator/
+                '--preview',
+              },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -177,6 +204,19 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'pylsp',
+        'ruff',
+        'isort',
+        'black',
+        'bashls',
+        'shellcheck',
+        'shfmt',
+        'awk_ls',
+        'tsserver',
+        'prettier',
+        'html',
+        'marksman',
+        'markdownlint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

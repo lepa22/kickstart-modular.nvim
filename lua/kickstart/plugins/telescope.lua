@@ -52,6 +52,7 @@ return {
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
@@ -62,6 +63,11 @@ return {
         --   },
         -- },
         -- pickers = {}
+
+        -- Change layout depending on the window width.
+        defaults = {
+          layout_strategy = 'flex',
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
