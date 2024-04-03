@@ -29,6 +29,9 @@ return {
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         python = { 'isort', 'ruff_fix', 'ruff_format' },
+        sh = {'shfmt'},
+        javascript = {'prettier'},
+        typescript = {'prettier'},
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
