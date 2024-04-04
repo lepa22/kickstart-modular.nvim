@@ -67,6 +67,7 @@ return {
         -- Change layout depending on the window width.
         defaults = {
           layout_strategy = 'flex',
+          layout_config = { flex = { flip_columns = 120 } },
         },
         extensions = {
           ['ui-select'] = {
