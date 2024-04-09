@@ -167,7 +167,7 @@ return {
               args = {
                 -- Enable Pyflakes (`F`) and pycodestyle (`E`, `W`) codes.
                 -- https://docs.astral.sh/ruff/configuration/
-                '--select=F,E,W,D',
+                '--select=F,E,W',
                 -- Enable preview mode to use unstable features, such as:
                 -- https://docs.astral.sh/ruff/rules/missing-whitespace-around-arithmetic-operator/
                 '--preview',
@@ -189,9 +189,9 @@ return {
             },
           },
         },
-      awk_ls = {},
-      tsserver = {},
-      bashls={},
+        awk_ls = {},
+        tsserver = {},
+        bashls = {},
       }
 
       -- Ensure the servers and tools above are installed
