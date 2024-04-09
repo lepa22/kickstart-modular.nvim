@@ -36,8 +36,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Save with <C-s> in all modes and return to the mode
 vim.keymap.set('n', '<C-s>', ':update<CR>', { desc = 'Save file' })
-vim.keymap.set('i', '<C-s>', '<ESC>:update<CR>li', { desc = 'Save file' })
+vim.keymap.set('i', '<C-s>', '<ESC>:update<CR>a', { desc = 'Save file' })
 vim.keymap.set('v', '<C-s>', ':update<CR>gv', { desc = 'Save file' })
+
+-- Keep selection after indenting
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
