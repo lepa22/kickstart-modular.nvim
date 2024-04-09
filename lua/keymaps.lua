@@ -34,6 +34,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Save with <C-s> in all modes and return to the mode
+vim.keymap.set('n', '<C-s>', ':update<CR>', { desc = 'Save file' })
+vim.keymap.set('i', '<C-s>', '<ESC>:update<CR>li', { desc = 'Save file' })
+vim.keymap.set('v', '<C-s>', ':update<CR>gv', { desc = 'Save file' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
