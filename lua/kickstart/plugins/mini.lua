@@ -51,10 +51,12 @@ return {
       -- Add pairs to brackets.
       require('mini.pairs').setup()
 
+      -- Add indentantion guides to code.
       require('mini.indentscope').setup {
         symbol = '│',
       }
 
+      -- Enable shortcut to split or join lines.
       require('mini.splitjoin').setup()
     end,
   },
