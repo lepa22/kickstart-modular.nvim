@@ -9,10 +9,16 @@ return {
   },
   config = function()
     -- Open with leader+e
-    vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Neotree' })
+    vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = '[E]xplorer (Neotree)' })
 
     require('neo-tree').setup {
       filesystem = {
+        window = {
+          mappings = {
+            ['l'] = 'open',
+            ['h'] = 'close_node',
+          },
+        },
         commands = {
           -- Make `d` move items to trash instead of deleting them.
           -- See: https://github.com/nvim-neo-tree/neo-tree.nvim/issues/202#issuecomment-1428278234
