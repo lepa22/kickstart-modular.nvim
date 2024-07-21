@@ -50,6 +50,7 @@ return {
 
       -- Add pairs to brackets.
       require('mini.pairs').setup()
+      -- require('mini.pairs').setup()
 
       -- Add indentantion guides to code.
       require('mini.indentscope').setup {

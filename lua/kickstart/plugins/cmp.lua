@@ -45,6 +45,10 @@ return {
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
 
+      -- Automatically insert parentheses after accepting suggestion
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
       cmp.setup {
         snippet = {
           expand = function(args)
