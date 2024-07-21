@@ -49,7 +49,6 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
 
       -- Add pairs to brackets.
-      require('mini.pairs').setup()
       -- require('mini.pairs').setup()
 
       -- Add indentantion guides to code.
