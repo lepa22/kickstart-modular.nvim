@@ -43,10 +43,14 @@ vim.keymap.set('v', '<C-s>', ':update<CR>gv', { desc = 'Save file' })
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
 
--- Switch to next buffer with <leader>+n
-vim.keymap.set('n', '<leader>n', ':bn<CR>', { desc = '[N]ext buffer' })
+-- Keep selection after pasting
+vim.keymap.set('v', 'p', 'p`[v`]')
+vim.keymap.set('v', 'P', 'P`[v`]')
+
+-- Switch to next buffer with <leader>+n+n
+vim.keymap.set('n', '<leader>nn', ':bn<CR>', { desc = '[N]ext buffer' })
 -- Switch to next buffer with <leader>+p
-vim.keymap.set('n', '<leader>p', ':bp<CR>', { desc = '[P]revious buffer' })
+vim.keymap.set('n', '<leader>pp', ':bp<CR>', { desc = '[P]revious buffer' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
