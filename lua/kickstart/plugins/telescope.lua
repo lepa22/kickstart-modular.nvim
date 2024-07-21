@@ -74,6 +74,16 @@ return {
             require('telescope.themes').get_dropdown(),
           },
         },
+        -- Sort buffers by most recently used and ignore the currently open buffer.
+        -- Ref: https://github.com/nvim-telescope/telescope.nvim/issues/791#issuecomment-882110015
+        -- And: https://github.com/nvim-telescope/telescope.nvim/pull/1028#issuecomment-886380719
+        pickers = {
+          buffers = {
+            -- sort_lastused = true,
+            sort_mru = true,
+            ignore_current_buffer = true,
+          },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
