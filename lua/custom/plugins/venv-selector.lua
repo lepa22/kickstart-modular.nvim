@@ -2,26 +2,31 @@ return {
   'linux-cultist/venv-selector.nvim',
   dependencies = {
     'neovim/nvim-lspconfig',
-    'nvim-telescope/telescope.nvim',
-    'mfussenegger/nvim-dap-python',
+    'mfussenegger/nvim-dap',
+    'mfussenegger/nvim-dap-python', --optional
+    { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
   },
-  opts = {
-    -- Your options go here
-    -- name = "venv",
-    -- auto_refresh = false
+  lazy = false,
+  branch = 'regexp', -- This is the regexp branch, use this for the new version
+  config = function()
+    -- This function gets called by the plugin when a new result from fd is received
+    -- You can change the filename displayed here to what you like.
+    -- Here in the example for linux/mac we replace the home directory with '~' and
+    -- remove the /bin/python part.
+    local function shorter_name(filename)
+      return filename:gsub(os.getenv 'HOME', '~'):gsub('/bin/python', '')
+    end
 
-    -- Set path for Anaconda environments
-    anaconda_base_path = '/home/lepa/miniconda3',
-    anaconda_envs_path = '/home/lepa/miniconda3/envs',
-
-    -- Don't search parent directories for venvs
-    parents = 0,
-  },
-  event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    require('venv-selector').setup {
+      settings = {
+        options = {
+          -- If you put the callback here as a global option, its used for all searches (including the default ones by the plugin)
+          on_telescope_result_callback = shorter_name,
+        },
+      },
+    }
+  end,
   keys = {
-    -- Keymap to open VenvSelector to pick a venv.
-    { '<leader>vs', '<cmd>VenvSelect<cr>' },
-    -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-    { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+    { ',v', '<cmd>VenvSelect<cr>' },
   },
 }
