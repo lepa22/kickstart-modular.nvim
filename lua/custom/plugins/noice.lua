@@ -35,6 +35,13 @@ return {
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
       },
+      -- show @recording messages
+      routes = {
+        {
+          view = 'notify',
+          filter = { event = 'msg_showmode' },
+        },
+      },
 
       -- Scroll the documentation window [b]ack / [f]orward
       vim.keymap.set({ 'n', 'i', 's' }, '<C-f>', function()
@@ -48,6 +55,8 @@ return {
           return '<c-b>'
         end
       end, { silent = true, expr = true }),
+      -- dismiss noice messages
+      vim.keymap.set('n', '<leader>nd', ':NoiceDismiss<CR>', { desc = 'Dismiss noice message' }),
     }
   end,
 }
