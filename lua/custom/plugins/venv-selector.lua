@@ -27,6 +27,6 @@ return {
     }
   end,
   keys = {
-    { ',v', '<cmd>VenvSelect<cr>' },
+    { '<leader>ve', '<cmd>VenvSelect<cr>', desc = 'Select [V]irtual [E]nvironement' },
   },
 }
