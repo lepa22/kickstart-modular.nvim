@@ -19,6 +19,13 @@ return {
             color = { fg = '#ff9e64' },
           },
         },
+        lualine_y = {
+          'progress',
+          -- Add the total number of lines to the progress section
+          function()
+            return vim.fn.line '$' .. 'L' -- vim.fn.line('$') returns the total number of lines
+          end,
+        },
       },
     }
   end,
